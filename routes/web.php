@@ -19,5 +19,6 @@ Route::get('/',[HomeController::class,'index']);
 Route::prefix('/task')->group (function(){
     Route::post('/save',[HomeController::class,'save'])->name('task.save'); 
     Route::get('/{task_id}/delete',[HomeController::class,'delete'])->name('task.delete'); 
+    Route::get('/{task_id}/update',[HomeController::class,'update'])->name('task.update'); 
 
 });

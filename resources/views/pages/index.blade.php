@@ -52,7 +52,7 @@
                        </td>
                         <td>
                             @if ($task->stuts==0 )
-                            <a href="" class="btn btn-success "><i class="las la-edit"></i></a>
+                            <a href="{{Route('task.update',$task->id)}}"  class="btn btn-success "><i class="las la-edit"></i></a>
                           @else  
                      
                          @endif

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use domain\facades\Todofacades;
+
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -21,22 +23,29 @@ class HomeController extends Controller
            
         }
    public function index(){
-    $task=Todo::all();
-    return View('pages.index',compact('task'));
+    // $task=Todofacades::all();
+    $response['task']=Todofacades::all();
+    return View('pages.index')->with($response);
    }
 
    public function save(Request $request){
      
-    $this->task-> create($request->all());
+    Todofacades::save($request->all());
     return redirect()->back();
 
    }
 
    public function delete($task_id){
 
-    $task=$this->task->find($task_id);
-    $task->delete();
+   Todofacades::delete($task_id);
     return redirect()->back()->with ('message',' Added Sucessfully!!');
+
+   }
+
+   public function update($task_id){
+
+    Todofacades::update($task_id);
+    return redirect()->back();
 
    }
 }
